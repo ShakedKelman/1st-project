@@ -1,0 +1,28 @@
+.image1-container {
+    display: flex;
+    background-image: url("/projects/project_one/assets/formbg.jpg");
+    justify-content: space-between;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 300px;
+    height: 300px;
+    flex-direction: row;
+
+}
+.flex-container {
+    display: flex;
+}
+
+.box {
+    flex: 1; /* This will make all items flexible and fill the container equally */
+    background-color: lightblue;
+    border: 1px solid blue;
+    margin: 5px;
+    padding: 10px;
+}
+
+/* Styling specific child elements */
+.flex-container > .box:nth-child(odd) {
+    background-color: lightgreen;
+}

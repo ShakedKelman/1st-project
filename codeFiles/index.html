@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="main-header">
+        <img src="../assets/title.png" alt="tasks board title">
+    </header>
+    <div class="form-image-wrapper">
+        <form id="formInfo" class="form-container">
+            <div class="form-box">
+                <label for="task-details" class="form-control-sm">enter task details</label>
+                <input type="text" class="form-control-sm " placeholder="enter here" id="taskDetails">
+            </div>
+            <br><br>
+            <div class="form-box">
+                <label for="task-date" class="form-control-sm">enter task submit date</label>
+                <input type="date" class="form-control-sm" placeholder="enter here" id="taskDate">
+            </div>
+            <br><br>
+            <div class="form-box">
+                <label for="task-time" class="form-control-sm">enter task goal time</label>
+                <input type="time" class="form-control-sm" placeholder="enter here" id="taskTime">
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-primary" id="saveButton" onclick="saveForm()">save to
+                    console</button>
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+        <br>
+      
+    </div>
+
+   
+
+    <div class="notesImageContainer">
+
+        <div class="box image1"></div>
+
+
+        <div class="box image2" id="noteNum2">
+            <button type="button" onclick="eraseNote()" class="btn btn-default" aria-label="Left Align" >
+                <span class="glyphicon glyphicon-remove" aria-hidden="true">x</span>
+            </button>
+        </div>
+
+
+
+        <div class="box image3">
+            <div class="box-inner-container">
+                <p class="text-sm-left">this is the assignment</p>
+                <textarea class="form-control text-sm-left font-weight-normal" rows="4" id="textarea">
+                </textarea>
+            </div>
+            <!-- <h6 class="h6">this is my assignment</h6>
+            <p class="text-sm-left">this is the assignment
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique fugit adipisci sequi quo sint ipsam,
+                iure facilis id eius doloremque saepe libero. Quam inventore, reiciendis corporis vel architecto
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis voluptatum possimus quibusdam? Voluptate vel laudantium commodi reiciendis doloremque laboriosam quas ea asperiores dolores odio, dolorem natus quae vitae excepturi nemo itaque animi maxime eaque fuga ad? Consequuntur, itaque? Itaque sit rerum quos, quo delectus recusandae assumenda saepe facere maxime expedita consequatur aperiam temporibus aspernatur quam dolorum officiis dolor modi earum!
+            </p> -->
+            <div>
+                <div class="dateAndTimeContainer">
+                    <input type="date" class="form-control input-sm">
+                    <input type="time" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
