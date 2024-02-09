@@ -113,11 +113,11 @@ div>.box {
 }
 
 .dateAndTimeContainer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-right: 175px;
-    margin-bottom: 70px;
+    /* position: absolute; */
+    /* bottom: 0;
+    right: 0; */
+    /* margin-right: 175px;
+    margin-bottom: 70px; */
 }
 
 .form-control.input-sm {
