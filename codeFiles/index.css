@@ -112,20 +112,8 @@ div>.box {
     position: relative;
 }
 
-.dateAndTimeContainer {
-    /* position: absolute; */
-    /* bottom: 0;
-    right: 0; */
-    /* margin-right: 175px;
-    margin-bottom: 70px; */
-}
-
-.form-control.input-sm {
-    margin: 5px;
-    height: 20px;
-    width: 100px;
-    background-color: beige;
-    color: gray;
+.TaskElseOutput {
+    color: blue;
 }
 
 /* 
