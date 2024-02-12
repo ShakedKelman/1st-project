@@ -72,7 +72,6 @@ div>.box {
 .box-inner-container {
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     font-size: 12px;
     text-align: left;
     margin-left: 0;
@@ -114,47 +113,37 @@ div>.box {
     word-wrap: break-word;
     width: 100%;
     height: 100%;
-    padding: 10px;
+    padding: 15px;
+}
+
+
+.task-checkbox {
+    padding-right: 10px;
+    justify-content: left;
+}
+
+
+.btn-icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.checkbox-container {
+    margin-right: auto;
+}
+
+.glyphicon-location {
+    margin-left: auto;
 }
 
 .btn-container {
     width: 100%;
-    height: 100%;
     margin-top: 100px;
     justify-content: center;
     text-align: center;
 }
-.checkbox-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.task-checkbox {
-    margin-right: 10px; /* Adjust margin as needed */
-}
-
-.glyphicon-location {
-    margin-left: auto; /* Pushes the glyphicon to the end of the row */
-    margin-top: 10px;
-    padding-right: 10px;
-}
-
-/*
-.task{
-    width: 175px;
-    height: 200px;}
-
-.task-checkbox{
-    width: 10px;
-    height: 20px;
-}
-
-.box-inner-container{
-    display: flex;
-} */
-
-
 .box:nth-child(1) {
     animation: fadeIn 0.5s ease-in-out forwards;
 }

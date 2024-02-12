@@ -24,11 +24,11 @@ function saveForm1() {
 
     // Push new task to tasks array
     let newTask =
-        {
-            textOutput: `task details: ${detailsInput}`,
-            elseOutput: `task date is: ${dateInput} task time is: ${timeInput}`,
-            checked: false // Initially unchecked
-        }
+    {
+        textOutput: `task details: ${detailsInput}`,
+        elseOutput: `task date is: ${dateInput} task time is: ${timeInput}`,
+        checked: false // Initially unchecked
+    }
     tasks.push(newTask);
 
     // Save updated tasks to local storage
@@ -37,18 +37,18 @@ function saveForm1() {
     // Render tasks on the page
     renderTasks(tasks);
     console.log(newTask);
-    
+
     resetForm()
-    
+
 }
 function resetForm() {
     let detailsInput = document.getElementById("taskDetails");
     let dateInput = document.getElementById("taskDate");
     let timeInput = document.getElementById("taskTime");
- detailsInput.value="";
- dateInput.value="";
- timeInput.value="";
- 
+    detailsInput.value = "";
+    dateInput.value = "";
+    timeInput.value = "";
+
 
 
 }
@@ -56,31 +56,53 @@ function resetForm() {
 // Function to render tasks on the page
 function renderTasks(tasks) {
     // Clear previous task output
-   let mainNode = document.getElementById("mainTaskContainer")
-   mainNode.innerHTML = "";
+    let mainNode = document.getElementById("mainTaskContainer")
+    mainNode.innerHTML = "";
 
     // Render each task
     tasks.forEach((task, index) => {
         // Create task div
         let taskDiv = document.createElement("div");
         taskDiv.className = "task box fw-light";
-        let btn = document.createElement('button');
-        btn.setAttribute('type', "button")
-        btn.onclick = eraseTask; 
-        btn.className="btn btn-default"
-        btn.setAttribute('aria-label', "Left Align");
-        btn.innerHTML = `<span class="glyphicon glyphicon-remove glyphicon-location" aria-hidden="true"></span>`
-        taskDiv.appendChild(btn);
+        // let btn = document.createElement('button');
+        // btn.setAttribute('type', "button")
+        // btn.onclick = eraseTask; 
+        // btn.className="btn btn-default"
+        // btn.setAttribute('aria-label', "Left Align");
+        // btn.innerHTML = `<span class="glyphicon glyphicon-remove glyphicon-location" aria-hidden="true"></span>`
+        // taskDiv.appendChild(btn);
         taskInnerDiv = document.createElement('div');
         taskInnerDiv.className = 'box-inner-container';
         taskDiv.appendChild(taskInnerDiv);
         taskInnerDiv.innerHTML = `
-        <div class="checkbox-container">
+        <div class="btn-icon-container">
+    <div class="checkbox-container">
         <input type="checkbox" class="task-checkbox" id="task${index}" ${task.checked ? 'checked' : ''} onchange="updateTask(${index}, this.checked)">
     </div>
-            <label for="task${index}" class="textOutput overflow-y-auto fw-medium">${task.textOutput}</label><br>
-            <div class="TaskElseOutput">${task.elseOutput}</div>
+    <div class="glyphicon-location">
+        <button type="button" class="btn btn-default" aria-label="Left Align" onclick="eraseTask()">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+
+    <div class="box-inner-container">
+        <label for="task${index}" class="textOutput overflow-y-auto fw-medium">${task.textOutput}</label><br>
+        <div class="TaskElseOutput">${task.elseOutput}</div>
+    </div>
         `;
+        // taskCheckIcon = document.createElement('div');
+        // taskInnerDiv.appendChild(taskCheckIcon);
+        // taskCheckIcon.className = 'tbn-icon-container';
+        // taskCheckIcon.innerHTML = ` 
+        // <div class="btn-container">
+        // <button type="button" class="btn btn-default" aria-label="Left Align" onclick="eraseTask()">
+        //     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        // </button>
+        // <div/>
+        // <input type="checkbox" class="task-checkbox" id="task${index}" ${task.checked ? 'checked' : ''} onchange="updateTask(${index}, this.checked)">`
+
+
         mainNode.appendChild(taskDiv);
     });
 }
@@ -98,7 +120,7 @@ function deleteCheckedTasks() {
     let tasks = getTasksFromLocalStorage();
     // Remove checked tasks
     let tasksRemaining = tasks.filter(task => !task.checked);
-    
+
     // Render remaining tasks
     if (tasks.length > tasksRemaining.length) {
         saveTasksToLocalStorage(tasksRemaining);
@@ -122,7 +144,7 @@ function eraseTask(event) {
 
 
 // Function to initialize tasks on page load
- function initTasks() {
+function initTasks() {
     let tasks = getTasksFromLocalStorage();
     renderTasks(tasks);
 };
