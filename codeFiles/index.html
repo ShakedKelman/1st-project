@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>y Task Board</title>
     <!-- bootstrap 3.3 for Glyphicons-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- bootstrap 5 css-->
@@ -28,25 +28,30 @@
         <img src="../assets/title.png" alt="tasks board title">
     </header>
     <div class="form-image-wrapper">
-        <form id="formInfo" class="form-container">
+        <form id="formInfo" class="form-container form-floating">
             <div class="form-box">
-                <label for="task-details" class="fw-light">enter task details</label>
-                <input type="text" class="" placeholder="enter here" id="taskDetails">
+                <label for="taskDetails" class="fw-light">enter task details</label>
+                <input type="text" class="form-control" placeholder="enter here" id="taskDetails">
             </div>
+            <!-- <form class="form-floating">
+                <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
+                <label for="floatingInputValue">Input with value</label>
+              </form> -->
             <br><br>
             <div class="form-box">
+
                 <label for="task-date" class="fw-light">enter task submit date</label>
-                <input type="date" class="" placeholder="enter here" id="taskDate">
+                <input type="date" class="form-control" placeholder="enter here" id="taskDate">
             </div>
             <br><br>
             <div class="form-box">
                 <label for="task-time" class="fw-light">enter task goal time</label>
-                <input type="time" class="" placeholder="enter here" id="taskTime">
+                <input type="time" class="form-control" placeholder="enter here" id="taskTime">
             </div>
             <div>
-                <button type="button" class="btn btn-outline-danger" id="saveButton" onclick="saveForm1()">add task
+                <button type="button" class="btn btn-outline-danger button-style" id="saveButton" onclick="saveForm1()">add task
                 </button>
-                <input type="reset" value="Reset" class="btn btn-outline-danger">
+                <input type="reset" value="Reset" class="btn btn-outline-danger  button-style">
             </div>
         </form>
         <br>

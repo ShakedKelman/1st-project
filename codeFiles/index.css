@@ -1,3 +1,4 @@
+
 html,
 body {
     margin: 0;
@@ -12,39 +13,57 @@ header.main-header {
     margin: 20px;
 }
 
+/* form styling */
 .form-image-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 200px;
     width: 100%;
-    padding: 50px;
+    /* padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 20px; */
+    padding: 100px;
 }
 
 .form-container {
-    height: 200px;
-    width: 7000px;
+    height: 150px;
+    width: 600px;
     border: 1px solid black;
     display: flex;
     flex-direction: row;
-    gap: 25px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 150px;
+    margin-top: 150px;
     justify-content: center;
     align-items: center;
     background-image: url(../assets/formbg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: repeat-y;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
 }
 
 .form-box {
-    height: 50px;
-    border: 1px solid black;
+    /* height: 50px; */
+    /* border: 1px solid black; */
     text-align: center;
     justify-content: center;
     display: flex;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10%;
+    
 }
 
+.button-style{
+    margin: 2px;
+    background-color: rgba(255, 255, 255, 0.9);
+        background-size: cover;
 
+}
+
+/* tasks styling */
 
 .notesImageContainer {
     display: flex;
@@ -54,10 +73,10 @@ header.main-header {
     gap: 10px;
     justify-content: left;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 100px;
+    margin-top: 100px;
 
 }
-
 
 
 div>.box {
@@ -69,40 +88,40 @@ div>.box {
     animation: fadeIn 1s ease-in;
 }
 
-.box-inner-container {
+/* .box-inner-container {
     width: 100%;
     height: 100%;
     font-size: 12px;
     text-align: left;
-    margin-left: 0;
+    margin-left: 0px;
+    margin-right: 10px;
     justify-content: center;
     display: inline-block;
-}
+} */
 
 .task {
     width: 175px;
     height: 200px;
     font-size: 12px;
     padding: 20px;
-    margin-bottom: 20px;
-    margin-right: 10px;
+    padding-right: 30px;
+    /* margin-bottom: 20px;
+    margin-right: 10px; */
     text-align: left;
-    margin-left: 0;
+    margin-left: 0px;
     justify-content: left;
     display: inline-block;
 }
 
-.box.image3 {
+/* .box.image3 {
     position: relative;
-}
+} */
 
 .TaskElseOutput {
     margin-bottom: 0;
     width: 150px;
     padding-top: 40px;
     padding-bottom: 15px;
-
-
 
 }
 
@@ -114,6 +133,8 @@ div>.box {
     width: 100%;
     height: 100%;
     padding: 15px;
+    margin-right: 10px;
+    margin-left: 0px;
 }
 
 
@@ -144,10 +165,11 @@ div>.box {
     justify-content: center;
     text-align: center;
 }
+
+/* fade in animation to the tasks one by one */
 .box:nth-child(1) {
     animation: fadeIn 0.5s ease-in-out forwards;
 }
-
 
 .box:nth-child(2) {
     animation: fadeIn 0.5s ease-in-out 0.5s forwards;
@@ -169,7 +191,8 @@ div>.box {
 }
 
 
-/*
+
+
 @media (max-width: 750px) {
     .container {
       flex-direction: column;
@@ -184,5 +207,36 @@ div>.box {
       margin-right: 0;
       margin-bottom: 20px;
     }
+    form-image-wrapper {
+        padding: 20px;
+    }
+
+    .form-container {
+        width: auto;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .notesImageContainer {
+        margin-left: 0;
+    }
+
+    .task {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .TaskElseOutput {
+        width: auto;
+        padding-top: 20px;
+    }
+
+    .textOutput {
+        max-height: 60px;
+    }
+
+    .btn-container {
+        margin-top: 20px;
+    }
   }
-   */

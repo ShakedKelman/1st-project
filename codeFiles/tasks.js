@@ -34,10 +34,8 @@ function saveForm1() {
     // Save updated tasks to local storage
     saveTasksToLocalStorage(tasks);
 
-    // Render tasks on the page
     renderTasks(tasks);
     console.log(newTask);
-
     resetForm()
 
 }
@@ -130,7 +128,7 @@ function deleteCheckedTasks() {
 
 
 function eraseTask(event) {
-    let note = event.target.parentNode.parentNode
+    let note = event.target.parentNode.parentNode;
     let checkBox = note.querySelector('input[type="checkbox"]');
     if (checkBox !== null) {
         checkBox.setAttribute('checked', true);
