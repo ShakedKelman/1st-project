@@ -10,22 +10,23 @@
     <!-- bootstrap 5 css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- my css -->
-    <link rel="stylesheet" href="./index.css">
+    <!-- my css file -->
+    <link rel="stylesheet" href="./styles.css">
     <!-- bootstrap 5 js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <!-- my js file -->
-    <script src="./tasks.js" defer></script>
-
+    <script src="./main.js" defer></script>
 
 </head>
-
 <body>
+
     <header class="main-header">
         <img src="../assets/title.png" alt="tasks board title">
     </header>
+
+   <!-- form with classes including bootstrap classes for styling -->
     <div class="form-image-wrapper">
         <form id="formInfo" class="form-container form-floating">
             <div class="form-box">
@@ -34,14 +35,13 @@
             </div>
             <br><br>
             <div class="form-box">
-
                 <label for="task-date" class="fw-light text-capitalize">enter task submit date</label>
-                <input type="date" class="form-control" placeholder="enter here" id="taskDate" required>
+                <input type="date" class="form-control" id="taskDate" required>
             </div>
             <br><br>
             <div class="form-box">
                 <label for="task-time" class="fw-light text-capitalize">enter task goal time</label>
-                <input type="time" class="form-control" placeholder="enter here" id="taskTime" required>
+                <input type="time" class="form-control" id="taskTime" required>
             </div>
             <div>
                 <button type="button" class="btn btn-outline-danger button-style text-capitalize" id="saveButton"
@@ -50,22 +50,18 @@
                 <input type="reset" value="Reset" class="btn btn-outline-danger  button-style text-capitalize">
             </div>
         </form>
-        <br>
-
     </div>
 
+    <!-- div that contains the tasks- the children div are  written in my js file -->
+    <div id="mainTaskContainer" class="notesImageContainer"></div>
 
-
-    <div id="mainTaskContainer" class="notesImageContainer">
-
-    </div>
+    <!-- button that deletes checked tasks when clicked -->
     <div class="btn-container">
         <button type="button" class="btn btn-outline-danger  button-style text-capitalize"
-            onclick="deleteCheckedTasks()">Delete Checked Tasks</button>
+            onclick="deleteCheckedTasks()">Delete Checked Tasks
+        </button>
     </div>
-
 
 
 </body>
-
 </html>

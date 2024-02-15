@@ -9,7 +9,7 @@ body {
 header.main-header {
     text-align: center;
     margin: 20px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* form styling */
@@ -22,6 +22,7 @@ header.main-header {
     padding: 100px;
 }
 
+/* form styling */
 .form-container {
     height: 150px;
     width: 600px;
@@ -39,8 +40,8 @@ header.main-header {
     background-repeat: repeat-y;
 }
 
+/* form styling */
 .form-box {
-    
     text-align: center;
     justify-content: center;
     display: flex;
@@ -49,12 +50,6 @@ header.main-header {
 
 }
 
-.button-style {
-    margin: 2px;
-    background-color: rgba(255, 255, 255, 0.9);
-    background-size: cover;
-
-}
 
 /* tasks styling */
 .notesImageContainer {
@@ -69,7 +64,19 @@ header.main-header {
     margin-top: 100px;
 }
 
+/* tasks styling */
+.task {
+    width: 175px;
+    height: 200px;
+    padding: 20px;
+    padding-right: 30px;
+    text-align: left;
+    margin-left: 0px;
+    justify-content: left;
+    display: inline-block;
+}
 
+/* tasks styling */
 div>.box {
     height: 300px;
     width: 200px;
@@ -79,6 +86,7 @@ div>.box {
     animation: fadeIn 1s ease-in;
 }
 
+/* tasks styling */
 .box-inner-container {
     width: 100%;
     height: 100%;
@@ -90,19 +98,8 @@ div>.box {
     display: inline-block;
 }
 
-.task {
-    width: 175px;
-    height: 200px;
-    font-size: 12px;
-    padding: 20px;
-    padding-right: 30px;
-    text-align: left;
-    margin-left: 0px;
-    justify-content: left;
-    display: inline-block;
-}
 
-
+/* tasks styling */
 .TaskElseOutput {
     margin-bottom: 0px;
     width: 150px;
@@ -110,6 +107,7 @@ div>.box {
 
 }
 
+/* tasks styling */
 .textOutput {
     max-height: 80px;
     max-width: 100%;
@@ -122,6 +120,7 @@ div>.box {
     margin-left: 0px;
 }
 
+/* tasks styling */
 .task-checkbox {
     padding-right: 10px;
     justify-content: left;
@@ -135,9 +134,24 @@ div>.box {
     width: 100%;
 }
 
+.btn-container {
+    width: 100%;
+    margin-top: 100px;
+    justify-content: center;
+    text-align: center;
+}
+
 .checkbox-container {
     margin-right: auto;
 }
+
+/* adds styles to all buttons in file */
+.button-style {
+    margin: 2px;
+    background-color: rgba(255, 255, 255, 0.9);
+    background-size: cover;
+}
+
 
 .glyphicon-location {
     margin-left: auto;
@@ -152,12 +166,6 @@ div>.box {
     display: inline-block;
 }
 
-.btn-container {
-    width: 100%;
-    margin-top: 100px;
-    justify-content: center;
-    text-align: center;
-}
 
 /* fade in animation to the tasks one by one */
 .box:nth-child(1) {
@@ -172,7 +180,6 @@ div>.box {
     animation: fadeIn 0.5s ease-in-out 1s forwards;
 }
 
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -184,39 +191,71 @@ div>.box {
 }
 
 
+/* media query for small screens */
 @media (max-width: 750px) {
-    html {
-        justify-content: center;
-        align-items: center;
-    }
-
     .form-image-wrapper {
-        width: 100%;
-        padding: 50px;
-        margin: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        padding-left: 150px;
+        margin-left: 60px;
+        margin-right: 60px;
+        font-size: 8px;
     }
-
     .form-container {
-        margin: 50px;
+        height: 100px;
+        width: 450px;
+        margin-left: 80px;
+    }
+    
+    .form-box {
+        width: 150px;
+        height: 35px;
+        background-color: rgba(195, 212, 246, 0.9);
+        border-radius: 10%;
+    
+    }
+    .notesImageContainer {
+        gap: 10px;
+        margin-left: 10px;
     }
 
     .task {
-        width: 100%;
-        margin-top: 50px;
+        padding: 20px;
+        padding-right: 30px;
+    }
+
+    div>.box {
+        height: 300px;
+        width: 150px;
     }
 
     .TaskElseOutput {
         width: auto;
-        padding-top: 20px;
+        padding-top: 50px;
     }
 
     .textOutput {
         max-height: 60px;
+        width: 100px;
         margin-right: 10px;
-        margin-left: 0;
+ 
     }
 
     .btn-container {
         margin-top: 100px;
     }
+    .glyphicon-location {
+        margin-left: auto;
+    }
+
+    .btn-default {
+        display: none;
+    }
+    
+    .box:hover .btn-default {
+        display: inline-block;
+    }
+    
 }
