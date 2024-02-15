@@ -19,25 +19,24 @@ function saveForm1() {
     let detailsInput = document.getElementById("taskDetails").value;
     let dateInput = document.getElementById("taskDate").value;
     let timeInput = document.getElementById("taskTime").value;
-
     let tasks = getTasksFromLocalStorage();
-
-    // Push new task to tasks array
-    let newTask =
-    {
-        textOutput: `task details: ${detailsInput}`,
-        elseOutput: `task date is: ${dateInput} task time is: ${timeInput}`,
-        checked: false // Initially unchecked
+    if (detailsInput && dateInput && timeInput) {
+        let newTask =
+        {
+            textOutput: `Task Details - ${detailsInput}`,
+            elseOutput: `Task Date Is: ${dateInput} Task Time Is: ${timeInput}`,
+            checked: false
+        }
+        tasks.push(newTask);
+        // Save updated tasks to local storage
+        saveTasksToLocalStorage(tasks);
+        renderTasks(tasks);
+        console.log(newTask);
+        resetForm()
     }
-    tasks.push(newTask);
-
-    // Save updated tasks to local storage
-    saveTasksToLocalStorage(tasks);
-
-    renderTasks(tasks);
-    console.log(newTask);
-    resetForm()
-
+    else {
+        alert("please fill all inputs")
+    }
 }
 function resetForm() {
     let detailsInput = document.getElementById("taskDetails");
@@ -46,62 +45,43 @@ function resetForm() {
     detailsInput.value = "";
     dateInput.value = "";
     timeInput.value = "";
-
-
-
 }
 
 // Function to render tasks on the page
 function renderTasks(tasks) {
     // Clear previous task output
-    let mainNode = document.getElementById("mainTaskContainer")
-    mainNode.innerHTML = "";
+    let mainTaskContainer = document.getElementById("mainTaskContainer")
+    mainTaskContainer.innerHTML = "";
 
     // Render each task
     tasks.forEach((task, index) => {
         // Create task div
         let taskDiv = document.createElement("div");
         taskDiv.className = "task box fw-light";
-        // let btn = document.createElement('button');
-        // btn.setAttribute('type', "button")
-        // btn.onclick = eraseTask; 
-        // btn.className="btn btn-default"
-        // btn.setAttribute('aria-label', "Left Align");
-        // btn.innerHTML = `<span class="glyphicon glyphicon-remove glyphicon-location" aria-hidden="true"></span>`
-        // taskDiv.appendChild(btn);
-        taskInnerDiv = document.createElement('div');
-        taskInnerDiv.className = 'box-inner-container';
+        taskInnerDiv = document.createElement("div");
+        taskInnerDiv.className = "box-inner-container";
         taskDiv.appendChild(taskInnerDiv);
         taskInnerDiv.innerHTML = `
         <div class="btn-icon-container">
-    <div class="checkbox-container">
-        <input type="checkbox" class="task-checkbox" id="task${index}" ${task.checked ? 'checked' : ''} onchange="updateTask(${index}, this.checked)">
-    </div>
-    <div class="glyphicon-location">
-        <button type="button" class="btn btn-default" aria-label="Left Align" onclick="eraseTask()">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-    </div>
-</div>
-
-    <div class="box-inner-container">
-        <label for="task${index}" class="textOutput overflow-y-auto fw-medium">${task.textOutput}</label><br>
-        <div class="TaskElseOutput">${task.elseOutput}</div>
-    </div>
+            <div class="checkbox-container">
+                <input type="checkbox" class="task-checkbox" id="task${index}" 
+                ${task.checked ? 'checked' : ''} onchange="updateTask(${index}, this.checked)">
+            </div>
+            <div class="glyphicon-location">
+                <button type="button" id="delete${index}" class="btn btn-default" 
+                aria-label="Left Align" onclick="eraseTask(this)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        <div class="box-inner-container">
+            <label for="task${index}" class="textOutput overflow-y-auto fw-light">${task.textOutput}</label><br>
+            <div class="TaskElseOutput">${task.elseOutput}</div>
+        </div>
         `;
-        // taskCheckIcon = document.createElement('div');
-        // taskInnerDiv.appendChild(taskCheckIcon);
-        // taskCheckIcon.className = 'tbn-icon-container';
-        // taskCheckIcon.innerHTML = ` 
-        // <div class="btn-container">
-        // <button type="button" class="btn btn-default" aria-label="Left Align" onclick="eraseTask()">
-        //     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        // </button>
-        // <div/>
-        // <input type="checkbox" class="task-checkbox" id="task${index}" ${task.checked ? 'checked' : ''} onchange="updateTask(${index}, this.checked)">`
+        console.log(`my task with the added  index ${index}: ${task}`);
 
-
-        mainNode.appendChild(taskDiv);
+        mainTaskContainer.appendChild(taskDiv);
     });
 }
 
@@ -127,24 +107,22 @@ function deleteCheckedTasks() {
 }
 
 
-function eraseTask(event) {
-    let note = event.target.parentNode.parentNode;
-    let checkBox = note.querySelector('input[type="checkbox"]');
-    if (checkBox !== null) {
-        checkBox.setAttribute('checked', true);
-        let taskId = checkBox.id;
-        let taskIdNum = taskId.match(/[0-9]+/);
-        updateTask(taskIdNum[0], true)
-        deleteCheckedTasks();
-        initTasks();
+function eraseTask(noteElement) {
+    let noteId = noteElement.id;
+    if (noteId !== null) {
+        let taskIdNum = noteId.match(/[0-9]+/); //this gives us the number of the note - if its "note_number_1" we will receive "1"
+        updateTask(taskIdNum[0], true)//this takes the task id number and changes the element to checked so we can erase the task
+        deleteCheckedTasks(); 
     }
 }
 
 
 // Function to initialize tasks on page load
 function initTasks() {
+    deleteCheckedTasks(); // Delete checked tasks when the page is loaded
     let tasks = getTasksFromLocalStorage();
     renderTasks(tasks);
+
 };
 
 window.onload = initTasks;
