@@ -1,5 +1,5 @@
 
-function saveTasksToLocalStorage(tasks) {// Function to save tasks to local storage
+function saveTasksToLocalStorage(tasks) {// function to save tasks to local storage
     const tasksJSON = JSON.stringify(tasks); // this turns it into JSON string
     localStorage.setItem('tasks', tasksJSON);// this Stores JSON  in local storage
 }
@@ -23,7 +23,7 @@ function saveForm() {//  this function saves form data to local storage and upda
             checked: false // setting checked as false for my default
         }
         tasks.push(newTask);
-        // Saving updated tasks to local storage
+        // saving updated tasks to local storage
         saveTasksToLocalStorage(tasks);
         renderTasks(tasks);
         console.log(newTask);
@@ -56,15 +56,15 @@ function renderTasks(tasks) {// this function renders (like reload) tasks on the
         taskInnerDiv.className = "box-inner-container";
         taskDiv.appendChild(taskInnerDiv);
         //adding all my necessary tags in my js for more dynamic file
-        taskInnerDiv.innerHTML = `
-        <div class="btn-icon-container">
+        taskInnerDiv.innerHTML = 
+        `<div class="btn-icon-container">
             <div class="checkbox-container">
                 <input type="checkbox" class="task-checkbox" id="task${index}" 
                 ${task.checked ? 'checked' : ''} onchange="updateTask(${index}, this.checked)">
             </div>
             <div class="glyphicon-location">
                 <button type="button" id="delete${index}" class="btn btn-default" 
-                aria-label="Left Align" onclick="eraseTask(this)">
+                aria-label="Left Align" onclick="eraseTask(${index})">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>
@@ -72,10 +72,9 @@ function renderTasks(tasks) {// this function renders (like reload) tasks on the
         <div class="box-inner-container">
             <label for="task${index}" class="textOutput overflow-y-auto fw-light">${task.textOutput}</label><br>
             <div class="TaskElseOutput">${task.elseOutput}</div>
-        </div>
-        `;
-        console.log(`my task with the added index ${index}: ${task}`);
+        </div>`;
 
+        console.log(` task and its index ${index}: ${task}`);
         mainTaskContainer.appendChild(taskDiv); //adding taskDiv
     });
 }
@@ -95,11 +94,9 @@ function deleteCheckedTasks() {// this function deletes checked tasks
     };
 }
 
-function eraseTask(noteElement) { // this function erases  a whole note also from local storage
-    let noteId = noteElement.id;
-    if (noteId !== null) { // if note id isnt null we delete the targeted note
-        let taskIdNum = noteId.match(/[0-9]+/); //this gives us the number of the note - if its "note_number_1" we will receive "1"
-        updateTask(taskIdNum[0], true)//this takes the task id number and changes the element to checked so we can erase the task
+function eraseTask(taskIdNum) { // this function erases  a whole note also from local storage
+    if (taskIdNum !== null) { // if note id isnt null we delete the targeted note
+        updateTask(taskIdNum, true)//this takes the task id number and changes the element to checked so we can erase the task
         deleteCheckedTasks(); // using the deleteCheckedTasks function properties to delete the note - instead of re writing what that function contains
     }
 }
