@@ -1,14 +1,19 @@
 
-function saveTasksToLocalStorage(tasks) {// function to save tasks to local storage
+function saveTasksToLocalStorage(tasks) {// function to save tasks to local storage so we can all it when needed
     const tasksJSON = JSON.stringify(tasks); // this turns it into JSON string
     localStorage.setItem('tasks', tasksJSON);// this Stores JSON  in local storage
+    console.log(JSON.parse(tasksJSON));
 }
 
-function getTasksFromLocalStorage() {// Function that brings tasks from local storage
+
+function getTasksFromLocalStorage() {
     const tasksJSON = localStorage.getItem('tasks');
-    return JSON.parse(tasksJSON) || [];// this converts JSON string to tasks array- for us to use in following functions
+    if (tasksJSON) {
+        return JSON.parse(tasksJSON);
+    } else {
+        return [];
+    }
 }
-
 
 function saveForm() {//  this function saves form data to local storage and update task details
     let detailsInput = document.getElementById("taskDetails").value;
@@ -16,7 +21,7 @@ function saveForm() {//  this function saves form data to local storage and upda
     let timeInput = document.getElementById("taskTime").value;
     let tasks = getTasksFromLocalStorage();
     if (detailsInput && dateInput && timeInput) {//this "if" is to make sure all inputs are filled
-        let newTask =
+        let newTask =//setting an object literal called newTask
         {
             textOutput: `Task Details - ${detailsInput}`,
             elseOutput: `Task Date Is: ${dateInput} Task Time Is: ${timeInput}`,
@@ -48,23 +53,26 @@ function renderTasks(tasks) {// this function renders (like reload) tasks on the
     let mainTaskContainer = document.getElementById("mainTaskContainer")
     mainTaskContainer.innerHTML = "";// clearing previous task output
 
-
-    tasks.forEach((task, index) => {// Rendering each task (by task index)
+    for (let index = 0; index < tasks.length; index++) {// Rendering each task (by task index)
+        let task = tasks[index];
         let taskDiv = document.createElement("div");// creating a new element to contain the tasks
         taskDiv.className = "task box fw-light";// adding classes for styling
-        taskInnerDiv = document.createElement("div");// creating another div inside taskDiv
+
+        let taskInnerDiv = document.createElement("div");// creating another div inside taskDiv
         taskInnerDiv.className = "box-inner-container";
         taskDiv.appendChild(taskInnerDiv);
+
         //adding all my necessary tags in my js for more dynamic file
-        taskInnerDiv.innerHTML = 
-        `<div class="btn-icon-container">
+
+        taskInnerDiv.innerHTML =
+            `<div class="btn-icon-container">
             <div class="checkbox-container">
-                <input type="checkbox" class="task-checkbox" id="task${index}" 
-                ${task.checked ? 'checked' : ''} onchange="updateTask(${index}, this.checked)">
+                <input type="checkbox" class="task-checkbox" id="task${index}" ${task.checked ? 'checked' : ''}
+                    onchange="updateTask(${index}, this.checked)">
             </div>
             <div class="glyphicon-location">
-                <button type="button" id="delete${index}" class="btn btn-default" 
-                aria-label="Left Align" onclick="eraseTask(${index})">
+                <button type="button" id="delete${index}" class="btn btn-default" aria-label="Left Align"
+                    onclick="eraseTask(${index})">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>
@@ -74,9 +82,10 @@ function renderTasks(tasks) {// this function renders (like reload) tasks on the
             <div class="TaskElseOutput">${task.elseOutput}</div>
         </div>`;
 
-        console.log(` task and its index ${index}: ${task}`);
-        mainTaskContainer.appendChild(taskDiv); //adding taskDiv
-    });
+
+        console.log(`Task and its index ${index}: ${task}`);
+        mainTaskContainer.appendChild(taskDiv);//adding taskDiv
+    }
 }
 
 function updateTask(index, checked) {// this function shows task status ( if checked/unchecked)
@@ -87,15 +96,21 @@ function updateTask(index, checked) {// this function shows task status ( if che
 
 function deleteCheckedTasks() {// this function deletes checked tasks
     let tasks = getTasksFromLocalStorage();
-    let tasksRemaining = tasks.filter(task => !task.checked);// task remaining will have all the unchecked tasks
+    let tasksRemaining = [];// task remaining will have all the unchecked tasks
+    for (let i = 0; i < tasks.length; i++) {
+        if (!tasks[i].checked) {
+            tasksRemaining.push(tasks[i]);
+            console.log(tasksRemaining);
+        }
+    }
     if (tasks.length > tasksRemaining.length) {// if tasks have more tasks than tasks remaining we enter the statement
-        saveTasksToLocalStorage(tasksRemaining); //saving remaining tasks
-        renderTasks(tasksRemaining); // now we wont have the checked tasks in the html and in local storage
-    };
+        saveTasksToLocalStorage(tasksRemaining);//saving remaining tasks
+        renderTasks(tasksRemaining);// now we wont have the checked tasks in the html and in local storage
+    }
 }
 
 function eraseTask(taskIdNum) { // this function erases  a whole note also from local storage
-    if (taskIdNum !== null) { // if note id isnt null we delete the targeted note
+    if (taskIdNum !== null) { // if note id is not null we delete the targeted note
         updateTask(taskIdNum, true)//this takes the task id number and changes the element to checked so we can erase the task
         deleteCheckedTasks(); // using the deleteCheckedTasks function properties to delete the note - instead of re writing what that function contains
     }
